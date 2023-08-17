@@ -1,5 +1,8 @@
 export type I18n = {
   home: string
+  error: {
+    notEntered: string
+  }
   login: {
     title: string
     form: {
@@ -10,6 +13,7 @@ export type I18n = {
         label: string
         checkbox: string
       }
+      failed: string
       forgetPasswordLink: string
       submit: string
       changeSignUpButton: string

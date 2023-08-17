@@ -1,14 +1,14 @@
 import useLocale from '@/hooks/useLocale'
-import { Button } from '@mui/material'
+import Layout from '@/components/common/layouts/Layout'
 
 export default function Home() {
   const { t } = useLocale()
 
   return (
-    <div>
-      {t.home}
-
-      <Button variant="contained">test</Button>
-    </div>
+    <Layout type="normal" title={t.home}>
+      <div className='pt-12'>
+        a
+      </div>
+    </Layout>
   )
 }

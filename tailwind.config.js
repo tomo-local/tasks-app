@@ -7,12 +7,19 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      colors: {
+        // under: '',
+        base: '#e5e7eb',
+        main: '#475569',
+        sub: '#6b7280',
       },
     },
+    zIndex: {
+      loading: '2000',
+      header: '1010',
+      drawer: '1000',
+      base: '0',
+    },
   },
-  plugins: [],
-};
+  plugins: [require('flowbite/plugin')],
+}

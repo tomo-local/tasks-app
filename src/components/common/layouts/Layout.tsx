@@ -1,21 +1,36 @@
+import { ReactNode } from 'react'
 import Head from 'next/head'
-import { FC, ReactNode, useLayoutEffect } from 'react'
 
-type LayoutProps = {
-  children?: ReactNode
+import Header from '@/components/common/layouts/Header'
+import Drawer from '@/components/common/layouts/Drawer'
+
+
+type Props = {
   title: string
-  className?: string | undefined
+  type: 'normal' | 'login'
+  children: ReactNode
 }
 
-const Layout: FC<LayoutProps> = ({ children, title, className }) => {
+export default function Layout({
+  title,
+  type,
+  children,
+}: Props) {
   return (
-    <>
+    <div className="static flex">
       <Head>
         <title>{title}</title>
+        <meta charSet="utf-8" />
       </Head>
-      <main className={className}>{children}</main>
-    </>
+      {type !== 'login' && (
+        <>
+          <Header />
+          <Drawer/>
+        </>
+      )}
+      <main className="flex-grow w-screen h-screen z-base bg-base">
+        {children}
+      </main>
+    </div>
   )
 }
-
-export default Layout

@@ -16,11 +16,11 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@s/*": ["./styles/*"],
-      "@p/*": ["./public/*"]
+      "@/*": ["src/*"],
+      "@s/*": ["styles/*"],
+      "@p/*": ["public/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "supabase/**/*.ts"]
 }
