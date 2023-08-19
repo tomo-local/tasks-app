@@ -6,12 +6,13 @@ export type I18n = {
   login: {
     title: string
     form: {
+      title: string
+      description: string
       email: {
         label: string
       }
       password: {
         label: string
-        checkbox: string
       }
       failed: string
       forgetPasswordLink: string

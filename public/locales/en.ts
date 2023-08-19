@@ -8,17 +8,18 @@ const en: I18n = {
   login: {
     title: 'Login App',
     form: {
+      title: 'Login',
+      description: 'Enter your details to login.',
       email: {
         label: 'E-mail',
       },
       password: {
         label: 'Password',
-        checkbox: 'Show password',
       },
       failed: 'Incorrect email address or password',
       forgetPasswordLink: 'Forgotten password ?',
       submit: 'Login',
-      changeSignUpButton: 'Create new account',
+      changeSignUpButton: 'Create account',
     },
   },
 }

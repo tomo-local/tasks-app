@@ -1,5 +1,7 @@
+const withMT = require('@material-tailwind/react/utils/withMT')
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+module.exports = withMT({
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -8,10 +10,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // under: '',
-        base: '#e5e7eb',
+        base: {
+          '00': '#f9fafb',
+          10: '#f3f4f6',
+        },
         main: '#475569',
         sub: '#6b7280',
+        hover: '#94a3b8',
+        success: {
+          base: '#22c55e',
+          main: '#16a34a',
+        },
+        error: {
+          base: '#ef4444',
+          main: '#dc2626',
+        },
       },
     },
     zIndex: {
@@ -21,5 +34,6 @@ module.exports = {
       base: '0',
     },
   },
-  plugins: [require('flowbite/plugin')],
-}
+  plugins: [],
+  important: true,
+})

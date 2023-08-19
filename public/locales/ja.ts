@@ -9,17 +9,18 @@ const ja: I18n = {
     title: 'アプリへログイン',
 
     form: {
+      title: 'ログイン',
+      description: 'ログインするには詳細を入力してください。',
       email: {
         label: 'メールアドレス',
       },
       password: {
         label: 'パスワード',
-        checkbox: 'パスワードを表示する',
       },
       failed: 'メールアドレスまたはパスワードに誤りがあります',
       forgetPasswordLink: 'パスワードを忘れた場合',
       submit: 'ログイン',
-      changeSignUpButton: 'アカウントを作成する',
+      changeSignUpButton: 'アカウントを作成',
     },
   },
 }

@@ -28,7 +28,7 @@ export default function Layout({
           <Drawer/>
         </>
       )}
-      <main className="flex-grow w-screen h-screen z-base bg-base">
+      <main className="flex-grow w-screen h-screen z-base bg-base-10">
         {children}
       </main>
     </div>
