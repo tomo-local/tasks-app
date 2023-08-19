@@ -1,6 +1,10 @@
 import { I18n } from '@/types/i18n'
 
 const en: I18n = {
+  language: {
+    japanese: 'Japanese',
+    english: 'English',
+  },
   home: 'home',
   error: {
     notEntered: 'Please enter a ',

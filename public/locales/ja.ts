@@ -1,6 +1,10 @@
 import { I18n } from '@/types/i18n'
 
 const ja: I18n = {
+  language: {
+    japanese: "日本語",
+    english: "英語"
+  },
   home: 'ホーム',
   error: {
     notEntered: 'を入力してください',

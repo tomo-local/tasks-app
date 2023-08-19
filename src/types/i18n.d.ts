@@ -1,4 +1,8 @@
 export type I18n = {
+  language: {
+    japanese: string
+    english: string
+ }
   home: string
   error: {
     notEntered: string
