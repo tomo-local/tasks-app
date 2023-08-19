@@ -157,7 +157,7 @@ export default function Login() {
                             />
                             <IconButton
                               variant="text"
-                              className="absolute right-1 top-0.5 text-main"
+                              className="!absolute right-1 top-0.5 text-main"
                               onClick={() => {
                                 setIsShowPassword(!isShowPassword)
                               }}
@@ -198,7 +198,6 @@ export default function Login() {
                         <ExclamationCircleIcon className="w-6 h-6 text-error-main" />
                       }
                       className="bg-error-base"
-
                       open={open}
                       action={
                         <IconButton
@@ -215,7 +214,7 @@ export default function Login() {
                         {t.login.form.failed}
                       </Typography>
                     </Alert>
-                </div>
+                  </div>
                   <div className="flex">
                     <div className="basis-2/3">
                       <Typography>
