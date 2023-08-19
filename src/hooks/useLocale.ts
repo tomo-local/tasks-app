@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
-import en from '@p/locales/en'
-import ja from '@p/locales/ja'
+import en from '@public/locales/en'
+import ja from '@public/locales/ja'
 
 function useLocale() {
   const { locale } = useRouter()
