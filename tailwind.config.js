@@ -22,7 +22,7 @@ module.exports = withMT({
           main: '#16a34a',
         },
         error: {
-          base: '#ef4444',
+          base: '#fecaca',
           main: '#dc2626',
         },
       },
@@ -35,5 +35,4 @@ module.exports = withMT({
     },
   },
   plugins: [],
-  important: true,
 })
