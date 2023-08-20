@@ -21,10 +21,8 @@ export default function LocaleSelect() {
 
   return (
     <div className="w-12">
-      <IconMeneBase
-        icon={<LanguageIcon className="w-5 h-5" />}
-      >
-        <List className="min-w-[50px] p-0">
+      <IconMeneBase icon={<LanguageIcon className="w-5 h-5" />}>
+        <List className="min-w-[50px] p-0 outline-none">
           <Link href={router.asPath} locale="en" passHref>
             <ListItem
               disabled={locale === 'en'}

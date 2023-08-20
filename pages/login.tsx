@@ -229,23 +229,36 @@ export default function Login() {
                 <Menu>
                   <MenuHandler>
                     <Button variant="text" className="p-1">
-                      {t.language.title}: {locale === 'en'? t.language.english : t.language.japanese}
+                      {t.language.title}:{' '}
+                      {locale === 'en'
+                        ? t.language.english
+                        : t.language.japanese}
                     </Button>
                   </MenuHandler>
                   <MenuList className="min-w-[60px] p-0">
-                    <Link href={router.asPath} locale="en" passHref>
+                    <Link
+                      href={router.asPath}
+                      locale="en"
+                      passHref
+                      className="outline-none"
+                    >
                       <MenuItem
                         disabled={locale === 'en'}
-                        className="flex justify-center"
+                        className="flex justify-center rounded-none"
                         aria-selected
                       >
                         {t.language.english}
                       </MenuItem>
                     </Link>
-                    <Link href={router.asPath} locale="ja" passHref>
+                    <Link
+                      href={router.asPath}
+                      locale="ja"
+                      className="outline-none"
+                      passHref
+                    >
                       <MenuItem
                         disabled={locale === 'ja'}
-                        className="flex justify-center"
+                        className="flex justify-center rounded-none"
                       >
                         {t.language.japanese}
                       </MenuItem>

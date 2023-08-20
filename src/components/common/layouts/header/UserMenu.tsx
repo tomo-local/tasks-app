@@ -41,7 +41,7 @@ export default function UserMenu() {
   return (
     <div className="w-12">
       <IconMeneBase icon={<Avatar alt="avatar" className="w-6 h-6" />}>
-        <Card shadow={false} className="w-[250px] m-0">
+        <Card shadow={false} className="w-[250px] outline-none">
           <List className="px-0 pb-0">
             <Link href={'/'}>
               <ListItem className={clsx(commonStyle, '')}>
