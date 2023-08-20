@@ -1,46 +1,49 @@
 
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
+import clsx from 'clsx'
 
 import {
-  Menu,
-  MenuHandler,
-  MenuList,
-  MenuItem
-} from '@material-tailwind/react/components/Menu'
-import IconButton from '@material-tailwind/react/components/IconButton'
-
+  List,
+  ListItem,
+} from '@material-tailwind/react/components/List'
 import LanguageIcon from '@heroicons/react/24/outline/LanguageIcon'
 
-import useLocale from '@/hooks/useLocale';
+import IconMeneBase from '@/components/common/layouts/header/IconMeneBase'
+import useLocale from '@/hooks/useLocale'
 
+const commonStyle =
+  'py-3 rounded-none hover:bg-sub hover:text-white focus:bg-sub focus:text-white font-bold'
 
 export default function LocaleSelect() {
-  const { t } = useLocale()
+  const { t, locale } = useLocale()
   const router = useRouter()
 
   return (
     <div className="w-12">
-      <Menu>
-        <MenuHandler>
-          <IconButton
-            variant="text"
-            color="white"
-            className="m-0.5 rounded-full hover:border"
-          >
-            <LanguageIcon className="w-5 h-5" />
-          </IconButton>
-        </MenuHandler>
-        <MenuList>
+      <IconMeneBase
+        icon={<LanguageIcon className="w-5 h-5" />}
+      >
+        <List className="min-w-[50px] p-0">
           <Link href={router.asPath} locale="en" passHref>
-            <MenuItem>{t.language.english}</MenuItem>
+            <ListItem
+              disabled={locale === 'en'}
+              className={clsx(commonStyle, '')}
+              aria-selected
+            >
+              {t.language.english}
+            </ListItem>
           </Link>
           <Link href={router.asPath} locale="ja" passHref>
-            <MenuItem>{t.language.japanese}</MenuItem>
+            <ListItem
+              disabled={locale === 'ja'}
+              className={clsx(commonStyle, '')}
+            >
+              {t.language.japanese}
+            </ListItem>
           </Link>
-        </MenuList>
-      </Menu>
+        </List>
+      </IconMeneBase>
     </div>
   )
 }

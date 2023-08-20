@@ -2,8 +2,21 @@ import { I18n } from '@/types/i18n'
 
 const ja: I18n = {
   language: {
-    japanese: "日本語",
-    english: "英語"
+    japanese: '日本語',
+    english: '英語',
+  },
+  header: {
+    notificationIcon: {
+      title: '通知',
+    },
+    languageIcon: {
+      title: '言語設定',
+    },
+    userIcon: {
+      profile: 'ユーザー情報',
+      setting: '設定',
+      logout: 'ログアウト',
+    },
   },
   home: 'ホーム',
   error: {

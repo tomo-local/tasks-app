@@ -2,7 +2,20 @@ export type I18n = {
   language: {
     japanese: string
     english: string
- }
+  }
+  header: {
+    notificationIcon: {
+      title: string
+    }
+    languageIcon: {
+      title: string
+    }
+    userIcon: {
+      profile: string
+      setting: string
+      logout: string
+    }
+  }
   home: string
   error: {
     notEntered: string

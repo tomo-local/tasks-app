@@ -5,6 +5,19 @@ const en: I18n = {
     japanese: 'Japanese',
     english: 'English',
   },
+  header: {
+    notificationIcon: {
+      title: "Notification"
+    },
+    languageIcon: {
+      title: "Language"
+    },
+    userIcon: {
+      profile: "User profile",
+      setting: "Setting",
+      logout:"Logout"
+    }
+  },
   home: 'home',
   error: {
     notEntered: 'Please enter a ',
