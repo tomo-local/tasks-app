@@ -1,5 +1,6 @@
 export type I18n = {
   language: {
+    title: string,
     japanese: string
     english: string
   }

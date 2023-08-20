@@ -2,6 +2,7 @@ import { I18n } from '@/types/i18n'
 
 const en: I18n = {
   language: {
+    title: 'Language',
     japanese: 'Japanese',
     english: 'English',
   },

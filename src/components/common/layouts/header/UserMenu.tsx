@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useSetAtom } from 'jotai/react'
+import clsx from 'clsx'
 
 import Avatar from '@material-tailwind/react/components/Avatar'
 import Card from '@material-tailwind/react/components/Card'
@@ -10,7 +10,6 @@ import {
   ListItemPrefix,
 } from '@material-tailwind/react/components/List'
 
-import clsx from 'clsx'
 
 import ArrowRightOnRectangleIcon from '@heroicons/react/24/outline/ArrowRightOnRectangleIcon'
 import Cog8ToothIcon from '@heroicons/react/24/outline/Cog8ToothIcon'
@@ -18,23 +17,22 @@ import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon'
 
 import IconMeneBase from '@/components/common/layouts/header/IconMeneBase'
 import useLocale from '@/hooks/useLocale'
+import useAuth from '@/hooks/useAuth'
 import { circularProcessAtom } from '@/jotai/tools/atom'
-import { supabase } from '@/utils/supabase'
 
 const commonStyle =
   'py-1.5 rounded-none hover:bg-sub hover:text-white focus:bg-sub focus:text-white'
 
 export default function UserMenu() {
   const { t } = useLocale()
-  const router = useRouter()
+  const { signOut } = useAuth()
   const setCircular = useSetAtom(circularProcessAtom)
 
 
   const handleLogout = async () => {
     setCircular(true)
     try {
-      await supabase.auth.signOut()
-      setTimeout(() => router.refresh(), 500)
+      await signOut()
     } catch (error) {
       console.error(error);
     }
