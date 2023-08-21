@@ -112,6 +112,7 @@ export default function Login() {
                           <Input
                             size="lg"
                             label={t.login.form.email.label}
+                            className="text-no-webkit-fill"
                             {...field}
                             error={invalid || open}
                           />
@@ -136,6 +137,7 @@ export default function Login() {
                             <Input
                               type={isShowPassword ? 'text' : 'password'}
                               label={t.login.form.password.label}
+                              className="text-no-webkit-fill"
                               size="lg"
                               {...field}
                               error={invalid || open}
@@ -228,7 +230,7 @@ export default function Login() {
               <CardFooter className="flex items-center justify-center h-10">
                 <Menu>
                   <MenuHandler>
-                    <Button variant="text" className="p-1">
+                    <Button variant="text" className="p-1 text-main">
                       {t.language.title}:{' '}
                       {locale === 'en'
                         ? t.language.english

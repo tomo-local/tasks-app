@@ -1,8 +1,7 @@
 import Link from 'next/link'
-import { useSetAtom } from 'jotai/react'
+import { useSetAtom, useAtomValue } from 'jotai/react'
 import clsx from 'clsx'
 
-import Avatar from '@material-tailwind/react/components/Avatar'
 import Card from '@material-tailwind/react/components/Card'
 import {
   List,
@@ -15,18 +14,21 @@ import ArrowRightOnRectangleIcon from '@heroicons/react/24/outline/ArrowRightOnR
 import Cog8ToothIcon from '@heroicons/react/24/outline/Cog8ToothIcon'
 import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon'
 
+import AvatarBase from '@/components/common/avatar/AvatarBase'
 import IconMeneBase from '@/components/common/layouts/header/IconMeneBase'
 import useLocale from '@/hooks/useLocale'
 import useAuth from '@/hooks/useAuth'
 import { circularProcessAtom } from '@/jotai/tools/atom'
+import { userAtom } from '@/jotai/account/user'
 
 const commonStyle =
-  'py-1.5 rounded-none hover:bg-sub hover:text-white focus:bg-sub focus:text-white'
+  'py-1.5 rounded-none text-main hover:bg-sub hover:text-white focus:bg-sub focus:text-white'
 
 export default function UserMenu() {
   const { t } = useLocale()
   const { signOut } = useAuth()
   const setCircular = useSetAtom(circularProcessAtom)
+  const user = useAtomValue(userAtom)
 
 
   const handleLogout = async () => {
@@ -39,9 +41,40 @@ export default function UserMenu() {
   }
 
   return (
-    <div className="w-12">
-      <IconMeneBase icon={<Avatar alt="avatar" className="w-6 h-6" />}>
-        <Card shadow={false} className="w-[250px] outline-none">
+    <div className="flex items-center justify-center w-12">
+      <IconMeneBase
+        variant="gradient"
+        icon={
+          <AvatarBase
+            username={user?.profile?.username}
+            src={user?.avatarUrl}
+            alt="avatar"
+            size="sm"
+          />
+        }
+      >
+        <Card shadow={false} className="w-[260px] outline-none">
+          <div className="flex min-h-[40px] p-3">
+            <div className="relative flex-none w-16">
+              <div>
+                <AvatarBase
+                  username={user?.profile?.username}
+                  src={user?.avatarUrl}
+                  alt="avatar"
+                  size="md"
+                  withBorder
+                  className="w-12 h-12 border border-base-20"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col flex-grow">
+              <div className="flex-1">
+                {user?.profile?.first_name} {user?.profile?.last_name}
+              </div>
+              <div className="flex-1">@{user?.profile?.username}</div>
+            </div>
+          </div>
+          <hr />
           <List className="px-0 pb-0">
             <Link href={'/'}>
               <ListItem className={clsx(commonStyle, '')}>

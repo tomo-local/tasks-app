@@ -1,5 +1,11 @@
-import { supabase } from '@/utils/supabase'
 import { useRouter } from 'next/navigation'
+import { useSetAtom } from 'jotai/react';
+import { RESET } from 'jotai/utils';
+
+import { supabase } from '@/utils/supabase'
+import { getAvatarUrl } from '@/api/storage/avatar';
+import { getProfileById } from '@/api/profiles'
+import { userAtom } from '@/jotai/account/user'
 
 export type SignInType = {
   email: string
@@ -9,6 +15,7 @@ export type SignInType = {
 export default function useAuth() {
   const { auth } = supabase
   const router = useRouter()
+  const setUser = useSetAtom(userAtom)
 
   const signIn = async ({ email, password }: SignInType) => {
     const { data, error } = await auth.signInWithPassword({ email, password })
@@ -17,11 +24,14 @@ export default function useAuth() {
       throw new Error(error.message)
     }
 
-    if (data) {
-      // TODO: set auth atom
-      console.log(data)
+    if (!data.user) {
+      throw new Error("Do not exist user profile")
     }
 
+    const profile = await getProfileById(data.user?.id)
+    const avatarUrl = getAvatarUrl(profile?.avatar_url)
+
+    setUser({ profile, avatarUrl })
     setTimeout(() => router.refresh(), 1000)
   }
 
@@ -32,12 +42,12 @@ export default function useAuth() {
       throw new Error(error.message)
     }
 
-    // TODO: reset auth atom
-
+    setUser(RESET)
     setTimeout(() => router.refresh(), 500)
   }
 
   return {
+    auth,
     signIn,
     signOut,
   }
