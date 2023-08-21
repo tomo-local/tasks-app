@@ -56,7 +56,7 @@ export default function Drawer() {
           >
             <Link href={'/home'} passHref className="outline-none">
               <DrawerItem
-                selected={router.asPath === '/home'}
+                selected={router.asPath.includes('/home')}
                 prefixIcon={
                   <HomeIcon
                     className={clsx('sm:h-5 sm:w-5', uiSetting.drawer && 'h-5 w-5')}
@@ -88,7 +88,7 @@ export default function Drawer() {
             </Link>
             <Link href={'/projects/list'} passHref className="outline-none">
               <DrawerItem
-                selected={router.asPath === '/projects/list'}
+                selected={router.asPath.includes('/projects')}
                 prefixIcon={
                   <ClipboardDocumentCheckIcon
                     className={clsx('sm:h-5 sm:w-5', uiSetting.drawer && 'h-5 w-5')}
@@ -104,7 +104,7 @@ export default function Drawer() {
             </Link>
             <Link href={'/tasks/list'} passHref className="outline-none">
               <DrawerItem
-                selected={router.asPath === '/tasks/list'}
+                selected={router.asPath.includes('/tasks')}
                 prefixIcon={
                   <CheckCircleIcon
                     className={clsx('sm:h-5 sm:w-5', uiSetting.drawer && 'h-5 w-5')}
@@ -121,7 +121,7 @@ export default function Drawer() {
             <hr className="my-2 border-blue-gray-50" />
             <Link href={'/setting'} passHref className="outline-none">
               <DrawerItem
-                selected={router.asPath === '/setting'}
+                selected={router.asPath.includes('/setting')}
                 prefixIcon={
                   <Cog8ToothIcon
                     className={clsx('sm:h-5 sm:w-5', uiSetting.drawer && 'h-5 w-5')}

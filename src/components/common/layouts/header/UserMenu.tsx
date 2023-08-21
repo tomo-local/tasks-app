@@ -76,7 +76,7 @@ export default function UserMenu() {
           </div>
           <hr />
           <List className="px-0 pb-0">
-            <Link href={'/'}>
+            <Link href={`/users/${user?.profile?.username}`}>
               <ListItem className={clsx(commonStyle, '')}>
                 <ListItemPrefix>
                   <IdentificationIcon className="w-5 h-5" />
@@ -84,7 +84,7 @@ export default function UserMenu() {
                 {t.header.userIcon.profile}
               </ListItem>
             </Link>
-            <Link href={'/'}>
+            <Link href={'/setting/profile'}>
               <ListItem className={clsx(commonStyle, '')}>
                 <ListItemPrefix>
                   <Cog8ToothIcon className="w-5 h-5" />
