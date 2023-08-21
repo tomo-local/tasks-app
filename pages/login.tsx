@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter } from 'next/router'
 import { object, string } from 'yup'
 import { useSetAtom } from 'jotai/react'
 import { useForm, Controller } from 'react-hook-form'
@@ -11,29 +11,27 @@ import Alert from '@material-tailwind/react/components/Alert'
 import Button from '@material-tailwind/react/components/Button'
 import Card from '@material-tailwind/react/components/Card'
 import CardBody from '@material-tailwind/react/components/Card/CardBody'
+import CardFooter from '@material-tailwind/react/components/Card/CardFooter'
 import IconButton from '@material-tailwind/react/components/IconButton'
 import Input from '@material-tailwind/react/components/Input'
 import Typography from '@material-tailwind/react/components/Typography'
+import { Menu, MenuHandler, MenuList, MenuItem } from '@material-tailwind/react/components/Menu'
 
 import XMarkIcon from '@heroicons/react/24/outline/XMarkIcon'
 import ExclamationCircleIcon from '@heroicons/react/24/outline/ExclamationCircleIcon'
 import EyeIcon from '@heroicons/react/24/outline/EyeIcon'
 import EyeSlashIcon from '@heroicons/react/24/outline/EyeSlashIcon'
 
-
 import Layout from '@/components/common/layouts/Layout'
 import useLocale from '@/hooks/useLocale'
-import { supabase } from '@/utils/supabase'
+import useAuth from '@/hooks/useAuth'
+import { SignInType } from '@/hooks/useAuth'
 import { circularProcessAtom } from '@/jotai/tools/atom'
-
-type LoginForm = {
-  email: string
-  password: string
-}
 
 export default function Login() {
   const { t, locale } = useLocale()
   const router = useRouter()
+  const { signIn } = useAuth()
 
   const schema = object()
     .shape({
@@ -72,27 +70,14 @@ export default function Login() {
   const [open, setOpen] = useState(false)
   const setCircular = useSetAtom(circularProcessAtom)
 
-  const handelLogin = async ({ email, password }: LoginForm) => {
+  const handelLogin = async ({ email, password }: SignInType) => {
     if (!email || !password) {
       return
     }
 
     setCircular(true)
     try {
-      const { data, error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      })
-
-      if (error?.message) {
-        throw new Error(error.message)
-      }
-
-      if (data) {
-        console.log(data);
-      }
-
-      setTimeout(() => router.refresh(), 1000)
+      await signIn({ email , password })
     } catch (error) {
       setOpen(true)
       setCircular(false)
@@ -103,7 +88,7 @@ export default function Login() {
     <Layout type="login" title={t.login.title}>
       <div className="min-h-[100vh] sm:before:grow sm:before:h-auto sm:before:min-h-[10rem] sm:after:min-h-auto sm:before:block sm:after:block sm:after:grow block flex-shrink-0">
         <div className="block my-0 shrink-0 sm:mx-auto sm:max-w-[450px] sm:border sm:border-main sm:rounded-lg  bg-base-00">
-          <div className="sm:h-auto sm:min-h-[500px] pt-14 px-12 pb-7">
+          <div className="sm:h-auto sm:min-h-[500px] pt-14 px-12">
             <Card className="w-ful bg-base-00" shadow={false}>
               <Typography variant="h4" className="mb-1 text-main">
                 {t.login.form.title}
@@ -127,6 +112,7 @@ export default function Login() {
                           <Input
                             size="lg"
                             label={t.login.form.email.label}
+                            className="text-no-webkit-fill"
                             {...field}
                             error={invalid || open}
                           />
@@ -151,6 +137,7 @@ export default function Login() {
                             <Input
                               type={isShowPassword ? 'text' : 'password'}
                               label={t.login.form.password.label}
+                              className="text-no-webkit-fill"
                               size="lg"
                               {...field}
                               error={invalid || open}
@@ -240,6 +227,47 @@ export default function Login() {
                   </div>
                 </form>
               </CardBody>
+              <CardFooter className="flex items-center justify-center h-10">
+                <Menu>
+                  <MenuHandler>
+                    <Button variant="text" className="p-1 text-main">
+                      {t.language.title}:{' '}
+                      {locale === 'en'
+                        ? t.language.english
+                        : t.language.japanese}
+                    </Button>
+                  </MenuHandler>
+                  <MenuList className="min-w-[60px] p-0">
+                    <Link
+                      href={router.asPath}
+                      locale="en"
+                      passHref
+                      className="outline-none"
+                    >
+                      <MenuItem
+                        disabled={locale === 'en'}
+                        className="flex justify-center rounded-none"
+                        aria-selected
+                      >
+                        {t.language.english}
+                      </MenuItem>
+                    </Link>
+                    <Link
+                      href={router.asPath}
+                      locale="ja"
+                      className="outline-none"
+                      passHref
+                    >
+                      <MenuItem
+                        disabled={locale === 'ja'}
+                        className="flex justify-center rounded-none"
+                      >
+                        {t.language.japanese}
+                      </MenuItem>
+                    </Link>
+                  </MenuList>
+                </Menu>
+              </CardFooter>
             </Card>
           </div>
         </div>
