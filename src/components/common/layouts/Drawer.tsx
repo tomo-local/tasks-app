@@ -1,4 +1,10 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+
+
+import clsx from 'clsx'
+
 import { Card, Typography, List, IconButton } from '@material-tailwind/react'
 import {
   PresentationChartBarIcon,
@@ -8,12 +14,17 @@ import {
   Bars3Icon,
   ChevronDoubleRightIcon,
 } from '@heroicons/react/24/solid'
-import DrawerItem from './drawer/DrawerItem'
-import clsx from 'clsx'
-import Link from 'next/link'
+import DrawerItem from '@/components/common/layouts/drawer/DrawerItem'
+
 
 export default function Drawer() {
   const [open, setOpen] = useState(true)
+  const router = useRouter()
+
+  useEffect(() => {
+    console.log(router)
+  },[])
+
 
   return (
     <div
@@ -43,8 +54,25 @@ export default function Drawer() {
           <List
             className={clsx('sm:min-w-full', !open && 'invisible sm:visible')}
           >
-            <Link href={'/dashboard'}>
+            <Link href={'/'} passHref className="outline-none">
               <DrawerItem
+                selected={router.asPath === '/'}
+                prefixIcon={
+                  <PresentationChartBarIcon
+                    className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
+                  />
+                }
+              >
+                <Typography
+                  className={clsx('font-normal', !open && 'invisible')}
+                >
+                  Home
+                </Typography>
+              </DrawerItem>
+            </Link>
+            <Link href={'/dashboard'} passHref className="outline-none">
+              <DrawerItem
+                selected={router.asPath === '/dashboard'}
                 prefixIcon={
                   <PresentationChartBarIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
@@ -58,8 +86,9 @@ export default function Drawer() {
                 </Typography>
               </DrawerItem>
             </Link>
-            <Link href={'/projects/list'}>
+            <Link href={'/projects/list'} passHref className="outline-none">
               <DrawerItem
+                selected={router.asPath === '/projects/list'}
                 prefixIcon={
                   <ShoppingBagIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
@@ -73,8 +102,9 @@ export default function Drawer() {
                 </Typography>
               </DrawerItem>
             </Link>
-            <Link href={'/tasks/list'}>
+            <Link href={'/tasks/list'} passHref className="outline-none">
               <DrawerItem
+                selected={router.asPath === '/tasks/list'}
                 prefixIcon={
                   <ShoppingBagIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
@@ -89,23 +119,9 @@ export default function Drawer() {
               </DrawerItem>
             </Link>
             <hr className="my-2 border-blue-gray-50" />
-            <Link href={''}>
+            <Link href={'/setting'} passHref className="outline-none">
               <DrawerItem
-                prefixIcon={
-                  <InboxIcon
-                    className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
-                  />
-                }
-              >
-                <Typography
-                  className={clsx('font-normal', !open && 'invisible')}
-                >
-                  Inbox
-                </Typography>
-              </DrawerItem>
-            </Link>
-            <Link href={'/setting'}>
-              <DrawerItem
+                selected={router.asPath === '/setting'}
                 prefixIcon={
                   <Cog6ToothIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
