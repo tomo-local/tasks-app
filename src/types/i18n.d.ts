@@ -1,4 +1,29 @@
 export type I18n = {
+  language: {
+    title: string
+    japanese: string
+    english: string
+  }
+  header: {
+    notificationIcon: {
+      title: string
+    }
+    languageIcon: {
+      title: string
+    }
+    userIcon: {
+      profile: string
+      setting: string
+      logout: string
+    }
+  }
+  drawer: {
+    home: { title: string }
+    dashboard: { title: string }
+    projects: { title: string }
+    tasks: { title: string }
+    setting: { title: string }
+  }
   home: string
   error: {
     notEntered: string

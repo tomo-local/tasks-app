@@ -13,6 +13,7 @@ module.exports = withMT({
         base: {
           '00': '#f9fafb',
           10: '#f3f4f6',
+          20: '#e5e7eb',
         },
         main: '#475569',
         sub: '#6b7280',

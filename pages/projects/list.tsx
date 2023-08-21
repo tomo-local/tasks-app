@@ -1,11 +1,11 @@
 import Layout from '@/components/common/layouts/Layout'
 
-function Home() {
+function TaskList() {
   return (
-    <Layout type="normal" title="Home">
+    <Layout type="normal" title="project list">
       <div className="pt-12">a</div>
     </Layout>
   )
 }
 
-export default Home
+export default TaskList
