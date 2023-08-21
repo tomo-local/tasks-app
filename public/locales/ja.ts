@@ -6,6 +6,7 @@ const ja: I18n = {
     japanese: '日本語',
     english: '英語',
   },
+  home: 'ホーム',
   header: {
     notificationIcon: {
       title: '通知',
@@ -19,7 +20,13 @@ const ja: I18n = {
       logout: 'ログアウト',
     },
   },
-  home: 'ホーム',
+  drawer: {
+    home: { title: 'ホーム' },
+    dashboard: { title: 'ダッシュボード' },
+    projects: { title: 'プロジェクト' },
+    tasks: { title: 'タスク' },
+    setting: { title: '設定' },
+  },
   error: {
     notEntered: 'を入力してください',
   },

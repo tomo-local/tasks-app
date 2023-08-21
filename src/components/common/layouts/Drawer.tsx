@@ -1,30 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-
-
 import clsx from 'clsx'
 
-import { Card, Typography, List, IconButton } from '@material-tailwind/react'
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  Bars3Icon,
-  ChevronDoubleRightIcon,
-} from '@heroicons/react/24/solid'
+import Card from '@material-tailwind/react/components/Card'
+import Typography from '@material-tailwind/react/components/Typography'
+import List from '@material-tailwind/react/components/List'
+import IconButton from '@material-tailwind/react/components/IconButton'
+
+import HomeIcon from '@heroicons/react/24/solid/HomeIcon'
+import PresentationChartBarIcon from '@heroicons/react/24/solid/PresentationChartBarIcon'
+import CheckCircleIcon from '@heroicons/react/24/solid/CheckCircleIcon'
+import ClipboardDocumentCheckIcon from '@heroicons/react/24/solid/ClipboardDocumentCheckIcon'
+import Cog8ToothIcon from '@heroicons/react/24/solid/Cog8ToothIcon'
+import Bars3Icon from '@heroicons/react/24/solid/Bars3Icon'
+import ChevronDoubleRightIcon from '@heroicons/react/24/solid/ChevronDoubleRightIcon'
+
+import useLocale from '@/hooks/useLocale'
 import DrawerItem from '@/components/common/layouts/drawer/DrawerItem'
 
-
 export default function Drawer() {
-  const [open, setOpen] = useState(true)
   const router = useRouter()
+  const { t } = useLocale()
 
-  useEffect(() => {
-    console.log(router)
-  },[])
-
+  const [open, setOpen] = useState(true)
 
   return (
     <div
@@ -58,7 +57,7 @@ export default function Drawer() {
               <DrawerItem
                 selected={router.asPath === '/'}
                 prefixIcon={
-                  <PresentationChartBarIcon
+                  <HomeIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
                   />
                 }
@@ -66,7 +65,7 @@ export default function Drawer() {
                 <Typography
                   className={clsx('font-normal', !open && 'invisible')}
                 >
-                  Home
+                  {t.drawer.home.title}
                 </Typography>
               </DrawerItem>
             </Link>
@@ -82,7 +81,7 @@ export default function Drawer() {
                 <Typography
                   className={clsx('font-normal', !open && 'invisible')}
                 >
-                  Dashboard
+                  {t.drawer.dashboard.title}
                 </Typography>
               </DrawerItem>
             </Link>
@@ -90,7 +89,7 @@ export default function Drawer() {
               <DrawerItem
                 selected={router.asPath === '/projects/list'}
                 prefixIcon={
-                  <ShoppingBagIcon
+                  <ClipboardDocumentCheckIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
                   />
                 }
@@ -98,7 +97,7 @@ export default function Drawer() {
                 <Typography
                   className={clsx('font-normal', !open && 'invisible')}
                 >
-                  Projects
+                  {t.drawer.projects.title}
                 </Typography>
               </DrawerItem>
             </Link>
@@ -106,7 +105,7 @@ export default function Drawer() {
               <DrawerItem
                 selected={router.asPath === '/tasks/list'}
                 prefixIcon={
-                  <ShoppingBagIcon
+                  <CheckCircleIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
                   />
                 }
@@ -114,7 +113,7 @@ export default function Drawer() {
                 <Typography
                   className={clsx('font-normal', !open && 'invisible')}
                 >
-                  Tasks
+                  {t.drawer.tasks.title}
                 </Typography>
               </DrawerItem>
             </Link>
@@ -123,7 +122,7 @@ export default function Drawer() {
               <DrawerItem
                 selected={router.asPath === '/setting'}
                 prefixIcon={
-                  <Cog6ToothIcon
+                  <Cog8ToothIcon
                     className={clsx('sm:h-5 sm:w-5', open && 'h-5 w-5')}
                   />
                 }
@@ -131,7 +130,7 @@ export default function Drawer() {
                 <Typography
                   className={clsx('font-normal', !open && 'invisible')}
                 >
-                  Settings
+                  {t.drawer.setting.title}
                 </Typography>
               </DrawerItem>
             </Link>
