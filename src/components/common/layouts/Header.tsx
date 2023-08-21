@@ -1,6 +1,4 @@
-import Typography from '@material-tailwind/react/components/Typography'
 import Navbar from '@material-tailwind/react/components/Navbar'
-import Input from '@material-tailwind/react/components/Input'
 
 import LocaleSelect from '@/components/common/layouts/header/LocaleSelect'
 import NotificationMenu from '@/components/common/layouts/header/NotificationMenu'

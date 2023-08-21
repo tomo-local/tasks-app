@@ -31,7 +31,7 @@ export default function Layout({ title, type, className, ...props }: Props) {
       )}
       <main
         className={clsx(
-          'flex-grow w-screen z-base bg-base-10 layer',
+          'flex-grow w-screen z-base bg-base-10 layer h-screen',
           className,
         )}
         {...props}

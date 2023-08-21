@@ -1,6 +1,6 @@
 export type I18n = {
   language: {
-    title: string,
+    title: string
     japanese: string
     english: string
   }
@@ -16,6 +16,13 @@ export type I18n = {
       setting: string
       logout: string
     }
+  }
+  drawer: {
+    home: { title: string }
+    dashboard: { title: string }
+    projects: { title: string }
+    tasks: { title: string }
+    setting: { title: string }
   }
   home: string
   error: {
