@@ -69,7 +69,7 @@ export default function UserMenu() {
             </div>
             <div className="flex flex-col flex-grow">
               <div className="flex-1">
-                {user?.profile?.first_name} {user?.profile?.last_name}
+                {user?.profile?.full_name}
               </div>
               <div className="flex-1">@{user?.profile?.username}</div>
             </div>

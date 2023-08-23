@@ -14,7 +14,7 @@ interface Props extends ListItemProps {
 export default function DrawerItem({ prefixIcon, suffixIcon, ref, ...props }: Props) {
   const { children, className, selected } = props
   return (
-    <ListItem className={clsx('p-2 sm:min-h-[42px] h-[42px]', className , selected && "bg-base-20")} {...props}>
+    <ListItem className={clsx('p-2 sm:min-h-[42px] h-[42px]', className)} {...props}>
       {prefixIcon && <ListItemPrefix>{prefixIcon}</ListItemPrefix>}
       {children}
       {suffixIcon && <ListItemSuffix>{suffixIcon}</ListItemSuffix>}

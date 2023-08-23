@@ -4,6 +4,9 @@ export type I18n = {
     japanese: string
     english: string
   }
+  error: {
+    notEntered: string
+  }
   header: {
     notificationIcon: {
       title: string
@@ -24,9 +27,31 @@ export type I18n = {
     tasks: { title: string }
     setting: { title: string }
   }
-  home: string
-  error: {
-    notEntered: string
+  home: {
+    title: string
+  }
+  setting: {
+    title: string
+    profile: {
+      title: string
+      baseProfile: {
+        title: string
+        fullName: string
+        selfIntroduction: string
+        location: string
+        baseLanguage: string
+      }
+      publicSetting: {
+        title: string
+        public: string
+        description: string
+      }
+      socialLink: {
+        title: string
+        description: string
+        addLink: string
+      }
+    }
   }
   login: {
     title: string

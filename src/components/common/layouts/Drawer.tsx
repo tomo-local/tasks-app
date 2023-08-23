@@ -52,7 +52,7 @@ export default function Drawer() {
       <div className="flex w-full h-full pt-12">
         <Card className="w-full rounded-none">
           <List
-            className={clsx('sm:min-w-full', !uiSetting.drawer && 'invisible sm:visible')}
+            className={clsx('sm:min-w-full', !uiSetting.drawer && 'hidden sm:block')}
           >
             <Link href={'/home'} passHref className="outline-none">
               <DrawerItem
