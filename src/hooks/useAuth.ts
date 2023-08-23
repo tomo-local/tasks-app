@@ -31,7 +31,7 @@ export default function useAuth() {
     const profile = await getProfileById(data.user?.id)
     const avatarUrl = getAvatarUrl(profile?.avatar_url)
 
-    setUser({ profile, avatarUrl })
+    setUser({ auth: data.user ,profile, avatarUrl })
     setTimeout(() => router.refresh(), 1000)
   }
 
@@ -42,8 +42,8 @@ export default function useAuth() {
       throw new Error(error.message)
     }
 
+    setTimeout(() => router.refresh(), 200)
     setUser(RESET)
-    setTimeout(() => router.refresh(), 500)
   }
 
   return {

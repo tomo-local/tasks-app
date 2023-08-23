@@ -17,7 +17,7 @@ interface Props extends ComponentProps<'main'> {
 export default function Layout({ title, type, className, ...props }: Props) {
   const circularProcess = useAtomValue(circularProcessAtom)
   return (
-    <div className="static flex bg-base-10">
+    <div className="static flex overflow-y-hidden bg-base-10">
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />

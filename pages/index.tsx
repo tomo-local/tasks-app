@@ -5,7 +5,7 @@ export default function Home() {
   const { t } = useLocale()
 
   return (
-    <Layout type="normal" title={t.home}>
+    <Layout type="normal" title={t.home.title}>
       <div className='pt-12'>
         a
       </div>

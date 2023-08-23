@@ -6,7 +6,9 @@ const ja: I18n = {
     japanese: '日本語',
     english: '英語',
   },
-  home: 'ホーム',
+  error: {
+    notEntered: 'を入力してください',
+  },
   header: {
     notificationIcon: {
       title: '通知',
@@ -27,12 +29,34 @@ const ja: I18n = {
     tasks: { title: 'タスク' },
     setting: { title: '設定' },
   },
-  error: {
-    notEntered: 'を入力してください',
+  home: {
+    title: 'ホーム',
+  },
+  setting: {
+    title: '設定',
+    profile: {
+      title: 'ユーザープロフィール',
+      baseProfile: {
+        title: '基本情報',
+        fullName: '名前',
+        selfIntroduction: '自己紹介',
+        location: '場所',
+        baseLanguage: '基本言語',
+      },
+      publicSetting: {
+        title: '公開設定',
+        public: '公開',
+        description: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇',
+      },
+      socialLink: {
+        title: "リンク",
+        description: "外部リンクを共有します。リンクがプロフィールに表示されるようになります。",
+        addLink: "リンクを追加"
+      }
+    },
   },
   login: {
     title: 'アプリへログイン',
-
     form: {
       title: 'ログイン',
       description: 'ログインするには詳細を入力してください。',
