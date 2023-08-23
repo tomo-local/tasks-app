@@ -6,6 +6,9 @@ const nextConfig = {
     locales: ['en', 'ja'],
     defaultLocale: 'ja',
   },
+  images: {
+    domains: [process.env.NEXT_PUBLIC_SUPABASE_DOMAIN],
+  },
 }
 
 module.exports = nextConfig
