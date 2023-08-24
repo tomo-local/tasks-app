@@ -6,6 +6,7 @@ import { useAtomValue } from 'jotai/react'
 
 import Header from '@/components/common/layouts/Header'
 import Drawer from '@/components/common/layouts/Drawer'
+import Alert from '@/components/common/Alert'
 import CircularProcess from '@/components/common/CircularProcess'
 import { circularProcessAtom } from '@/jotai/tools/atom'
 
@@ -16,8 +17,9 @@ interface Props extends ComponentProps<'main'> {
 
 export default function Layout({ title, type, className, ...props }: Props) {
   const circularProcess = useAtomValue(circularProcessAtom)
+
   return (
-    <div className="static flex overflow-y-hidden bg-base-10">
+    <div className="static flex overflow-hidden bg-base-10">
       <Head>
         <title>{title}</title>
         <meta charSet="utf-8" />
@@ -29,6 +31,7 @@ export default function Layout({ title, type, className, ...props }: Props) {
           <Drawer />
         </>
       )}
+      <Alert />
       <main
         className={clsx(
           'flex-grow w-screen z-base bg-base-10 layer h-screen',

@@ -8,10 +8,8 @@ type Props = {
 export default function SettingLayout({ children }: Props) {
   return (
     <div className="flex flex-col h-full sm:flex-row">
-      <div className="border">
-        <SettingMenu />
-      </div>
-      <div className="flex-1 overflow-y-scroll border">{children}</div>
+      <SettingMenu />
+      <div className="flex-1 overflow-y-scroll">{children}</div>
     </div>
   )
 }

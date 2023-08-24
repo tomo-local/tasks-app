@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import clsx from 'clsx'
@@ -119,7 +118,7 @@ export default function Drawer() {
               </DrawerItem>
             </Link>
             <hr className="my-2 border-blue-gray-50" />
-            <Link href={'/setting'} passHref className="outline-none">
+            <Link href={'/setting/account'} passHref className="outline-none">
               <DrawerItem
                 selected={router.asPath.includes('/setting')}
                 prefixIcon={
