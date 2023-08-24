@@ -64,7 +64,6 @@ export default function EditableInput({
   return (
     <Textarea
       {...props}
-      autoFocus
       value={value}
       onChange={onChange}
       onFocus={onFocus}
