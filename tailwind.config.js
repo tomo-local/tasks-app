@@ -32,6 +32,7 @@ module.exports = withMT({
       loading: '2000',
       header: '1010',
       drawer: '1000',
+      alert: '999',
       base: '0',
     },
   },

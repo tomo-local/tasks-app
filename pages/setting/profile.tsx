@@ -1,7 +1,10 @@
-import useLocale from '@/hooks/useLocale'
 import Layout from '@/components/common/layouts/Layout'
-import SettingLayout from '../../src/components/settings/SettingLayout'
-import YourProfile from '../../src/components/settings/profile/YourProfile'
+import SettingLayout from '@/components/settings/SettingLayout'
+import SettingBase from '@/components/settings/SettingBase'
+import ProfileForm from '@/components/settings/profile/ProfileForm'
+import AvatarForm from '@/components/settings/profile/AvatarForm'
+
+import useLocale from '@/hooks/useLocale'
 
 function Profile() {
   const { t } = useLocale()
@@ -9,7 +12,14 @@ function Profile() {
     <Layout type="normal" title={t.setting.profile.title}>
       <div className="h-screen pt-12">
         <SettingLayout>
-          <YourProfile />
+          <SettingBase title={t.setting.profile.title}>
+            <div className="flex justify-center flex-none my-5">
+              <AvatarForm/>
+            </div>
+            <div className="flex-1">
+              <ProfileForm />
+            </div>
+          </SettingBase>
         </SettingLayout>
       </div>
     </Layout>

@@ -1,8 +1,15 @@
 import { supabase } from '@/utils/supabase'
+import type { Database } from '@/types/schema'
+
+export type InputProfile =  Database extends {
+  public : { Tables: { profiles: { Update: infer U  } }  }
+} ? U : never
+
+const profiles =  supabase.from('profiles')
 
 async function getProfileById(id: string) {
   try {
-    const { data, error, status, statusText } = await supabase.from('profiles').select().eq('id', id).single()
+    const { data, error, status, statusText } = await profiles.select().eq('id', id).single()
 
     if (status !== 200 && statusText !== 'OK') {
       console.log(error)
@@ -14,6 +21,21 @@ async function getProfileById(id: string) {
   }
 }
 
+async function updateProfile(profile: InputProfile) {
+  try {
+    const { data, error, status, statusText } = await profiles
+      .update(profile)
+      .eq('id', profile.id)
+      .select().single()
 
+    if (status !== 200 && statusText !== 'OK') {
+      console.log(error)
+      throw new Error(error?.message)
+    }
 
-export { getProfileById }
+    return data
+  } catch (error) {
+  }
+}
+
+export { getProfileById, updateProfile }

@@ -121,6 +121,7 @@ export interface Database {
         Row: {
           avatar_url: string | null
           base_language: string
+          description: string | null
           full_name: string | null
           id: string
           location: string | null
@@ -133,6 +134,7 @@ export interface Database {
         Insert: {
           avatar_url?: string | null
           base_language?: string
+          description?: string | null
           full_name?: string | null
           id: string
           location?: string | null
@@ -145,6 +147,7 @@ export interface Database {
         Update: {
           avatar_url?: string | null
           base_language?: string
+          description?: string | null
           full_name?: string | null
           id?: string
           location?: string | null
