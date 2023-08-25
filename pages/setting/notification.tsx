@@ -8,10 +8,10 @@ function Notification() {
   const { t } = useLocale()
 
   return (
-    <Layout type="normal" title={t.setting.title}>
+    <Layout type="normal" title={t.page.setting.notification}>
       <div className="h-screen pt-12">
         <SettingLayout>
-          <SettingBase title={t.setting.title}>index</SettingBase>
+          <SettingBase title={t.page.setting.notification}>index</SettingBase>
         </SettingLayout>
       </div>
     </Layout>

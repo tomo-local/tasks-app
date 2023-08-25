@@ -33,7 +33,7 @@ export default function useProfile() {
         ...profile,
         full_name: value,
       })
-      showAlert("success","名前の更新に成功しました")
+      showAlert("success", "名前の更新に成功しました")
     } catch (error) {
       console.log(error)
       throw new Error('full_name')

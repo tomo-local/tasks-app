@@ -9,10 +9,10 @@ import useLocale from '@/hooks/useLocale'
 function Profile() {
   const { t } = useLocale()
   return (
-    <Layout type="normal" title={t.setting.profile.title}>
+    <Layout type="normal" title={t.page.setting.profile}>
       <div className="h-screen pt-12">
         <SettingLayout>
-          <SettingBase title={t.setting.profile.title}>
+          <SettingBase title={t.page.setting.profile}>
             <div className="flex justify-center flex-none my-5">
               <AvatarForm/>
             </div>

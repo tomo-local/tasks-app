@@ -85,7 +85,7 @@ export default function Login() {
   }
 
   return (
-    <Layout type="login" title={t.login.title}>
+    <Layout type="login" title={t.page.login}>
       <div className="min-h-[100vh] sm:before:grow sm:before:h-auto sm:before:min-h-[10rem] sm:after:min-h-auto sm:before:block sm:after:block sm:after:grow block flex-shrink-0">
         <div className="block my-0 shrink-0 sm:mx-auto sm:max-w-[450px] sm:border sm:border-main sm:rounded-lg  bg-base-00">
           <div className="sm:h-auto sm:min-h-[500px] pt-14 px-12">
