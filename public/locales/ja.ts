@@ -39,7 +39,7 @@ const ja: I18n = {
       baseProfile: {
         title: '基本情報',
         fullName: '名前',
-        selfIntroduction: '自己紹介',
+        description: '説明',
         location: '場所',
         baseLanguage: '基本言語',
       },
@@ -49,10 +49,11 @@ const ja: I18n = {
         description: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇',
       },
       socialLink: {
-        title: "リンク",
-        description: "外部リンクを共有します。リンクがプロフィールに表示されるようになります。",
-        addLink: "リンクを追加"
-      }
+        title: 'リンク',
+        description:
+          '外部リンクを共有します。リンクがプロフィールに表示されるようになります。',
+        addLink: 'リンクを追加',
+      },
     },
   },
   login: {

@@ -42,11 +42,9 @@ export default function ProfileForm() {
       </div>
       <div>
         <EditableTextarea
-          label={t.setting.profile.baseProfile.selfIntroduction}
+          label={t.setting.profile.baseProfile.description}
           onSave={handleSelfIntroduction}
-          defaultValue={
-            profile?.self_introduction ? profile?.self_introduction : ''
-          }
+          defaultValue={profile?.description ? profile?.description : ''}
         />
       </div>
       <div className="flex flex-col gap-4">

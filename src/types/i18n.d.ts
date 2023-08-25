@@ -37,7 +37,7 @@ export type I18n = {
       baseProfile: {
         title: string
         fullName: string
-        selfIntroduction: string
+        description: string
         location: string
         baseLanguage: string
       }

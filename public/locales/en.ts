@@ -39,7 +39,7 @@ const en: I18n = {
       baseProfile: {
         title: 'Base Profile',
         fullName: 'Full Name',
-        selfIntroduction: 'Self Introduction',
+        description: 'Description',
         location: 'Location',
         baseLanguage: 'Base Language',
       },
