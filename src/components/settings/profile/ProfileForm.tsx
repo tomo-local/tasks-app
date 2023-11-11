@@ -21,19 +21,13 @@ import useProfileControl from '@/hooks/user/useProfileControl'
 export default function ProfileForm() {
   const { t } = useLocale()
 
-  const {
-    profile,
-    handleFullNameSave,
-    handleLocationSave,
-    handleSelfIntroduction,
-  } = useProfileControl()
+  const { profile, handleFullNameSave, handleLocationSave, handleDescription } =
+    useProfileControl()
 
   return (
     <form className="flex flex-col gap-4">
       <div>
-        <Typography variant="h5">
-          {t.profile.baseProfile.title}
-        </Typography>
+        <Typography variant="h5">{t.profile.baseProfile.title}</Typography>
         <hr className="border border-main" />
       </div>
       <div className="flex flex-col gap-4">
@@ -47,7 +41,7 @@ export default function ProfileForm() {
       <div>
         <EditableTextarea
           label={t.profile.baseProfile.description.label}
-          onSave={handleSelfIntroduction}
+          onSave={handleDescription}
           defaultValue={profile?.description ? profile?.description : ''}
         />
       </div>
@@ -60,15 +54,20 @@ export default function ProfileForm() {
         />
       </div>
       <div className="flex flex-col flex-wrap gap-4">
-        <Select label={t.profile.baseProfile.baseLanguage.label} value={profile?.base_language == "ja" ? t.language.japanese : t.language.english}>
+        <Select
+          label={t.profile.baseProfile.baseLanguage.label}
+          value={
+            profile?.base_language == 'ja'
+              ? t.language.japanese
+              : t.language.english
+          }
+        >
           <Option value="ja">{t.language.japanese}</Option>
           <Option value="en">{t.language.english}</Option>
         </Select>
       </div>
       <div>
-        <Typography variant="h5">
-          {t.profile.publicSetting.title}
-        </Typography>
+        <Typography variant="h5">{t.profile.publicSetting.title}</Typography>
         <hr className="border border-main" />
       </div>
       <div>
@@ -90,32 +89,30 @@ export default function ProfileForm() {
         />
       </div>
       <div>
-        <Typography variant="h5">
-          {t.profile.socialLink.title}
-        </Typography>
+        <Typography variant="h5">{t.profile.socialLink.title}</Typography>
         <hr className="border border-main" />
       </div>
       <div className="space-y-1">
-        <div className="flex space-x-1">
-          <EditableInput
-            type="url"
-            className="!border-none"
-            labelProps={{
-              className: 'hidden',
-            }}
-            containerProps={{
-              className:
-                '!border ring-4 ring-transparent rounded-lg border-blue-gray-200 focus:!border-gray-900 focus:!border-2',
-            }}
-            defaultValue={'https://twitter.com/tomo_ToT_'}
-            icon={<LinkIcon className="w-4 h-4" />}
-          />
-          <IconButton>
-            <MinusIcon className="w-4 h-4" />
-          </IconButton>
-        </div>
         {profile?.social_link?.map((a, i) => (
-          <EditableInput key={`link_${i}`} value={a} />
+          <div key={`link_${i}`} className="flex space-x-1">
+            <EditableInput
+              type="url"
+              key={`link_${i}`}
+              value={a}
+              className="!border-none"
+              labelProps={{
+                className: 'hidden',
+              }}
+              containerProps={{
+                className:
+                  '!border ring-4 ring-transparent rounded-lg border-blue-gray-200 focus:!border-gray-900 focus:!border-2',
+              }}
+              icon={<LinkIcon className="w-4 h-4" />}
+            />
+            <IconButton>
+              <MinusIcon className="w-4 h-4" />
+            </IconButton>
+          </div>
         ))}
         <div className="flex space-x-1">
           <EditableInput

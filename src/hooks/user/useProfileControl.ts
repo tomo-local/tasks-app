@@ -1,74 +1,78 @@
 import { useAtom } from 'jotai'
-import { profileAtom } from '@/jotai/account/user';
-import useAlert from '@/hooks/useAlert';
+import { profileAtom } from '@/jotai/account/user'
+import useAlert from '@/hooks/useAlert'
+import useLocale from '@/hooks/useLocale'
 
 type InputValue = string | null | undefined
 
-import { updateProfile as updateProfileAPI, InputProfile } from '@/api/profiles';
+import { updateProfile as updateProfileAPI, InputProfile } from '@/api/profiles'
 
 export default function useProfile() {
   const [profile, setProfile] = useAtom(profileAtom)
   const { showAlert } = useAlert()
+  const { t } = useLocale()
 
-  const updateProfile = async (profile: InputProfile) => {
+  const updateProfile = async (profile: InputProfile, label: string) => {
     try {
       const res = await updateProfileAPI({
         ...profile,
         updated_at: new Date().toLocaleString('ja-JP'),
       })
 
-      if (res) {
-        setProfile(res)
-      }
-    } catch (e) {
+      setProfile(res)
 
-    }
+      showAlert('success', `${t.alert.update.success} : ${label}`)
+    } catch (e) {}
   }
 
   const handleFullNameSave = async (value: InputValue) => {
     try {
-      console.log("aa",value);
-
-      updateProfile({
-        ...profile,
-        full_name: value,
-      })
-      showAlert("success", "名前の更新に成功しました")
+      updateProfile(
+        {
+          ...profile,
+          full_name: value,
+        },
+        t.profile.baseProfile.fullName.label,
+      )
     } catch (error) {
       console.log(error)
-      throw new Error('full_name')
+      throw new Error(t.alert.update.failure)
     }
   }
 
-    const handleLocationSave = async (value: InputValue) => {
-      try {
-        updateProfile({
+  const handleLocationSave = async (value: InputValue) => {
+    try {
+      updateProfile(
+        {
           ...profile,
           location: value,
-        })
-        showAlert('success', 'ok')
-      } catch (error) {
-        console.log(error)
-        throw new Error('location')
-      }
+        },
+        t.profile.baseProfile.location.label,
+      )
+    } catch (error) {
+      console.log(error)
+      throw new Error(t.alert.update.failure)
     }
-    const handleSelfIntroduction = async (value: InputValue) => {
-      try {
-        updateProfile({
+  }
+  const handleDescription = async (value: InputValue) => {
+    try {
+      updateProfile(
+        {
           ...profile,
-          self_introduction: value,
-        })
-        showAlert('success', 'ok')
-      } catch (error) {
-        console.log(error)
-        throw new Error('self_introduction')
-      }
+          description: value,
+        },
+        t.profile.baseProfile.description.label,
+      )
+    } catch (error) {
+      console.log(error)
+      throw new Error(t.alert.update.failure)
     }
+  }
 
   return {
     profile,
     handleFullNameSave,
     handleLocationSave,
-    handleSelfIntroduction,
+    handleDescription,
   }
 }

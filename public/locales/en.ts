@@ -43,8 +43,8 @@ const en: I18n = {
     home: 'Home',
     login: 'Login App',
     setting: {
-      account: 'Account Information',
-      profile: 'Your Profile',
+      account: 'Account',
+      profile: 'Profile',
       notification: 'Notification',
     },
   },

@@ -5,7 +5,7 @@ function Home() {
   const { t } = useLocale()
 
   return (
-    <Layout type="normal" title={t.home.title}>
+    <Layout type="normal" title={t.page.home}>
       <div className="pt-12">a</div>
     </Layout>
   )
