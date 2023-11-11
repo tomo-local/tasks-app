@@ -3,9 +3,9 @@ import { atom } from 'jotai'
 
 export const circularProcessAtom = atom(false)
 
-type AlertType = {
+export type AlertType = {
   id: string
-  color: string
+  color: "success" | "error" | "warning" | "info"
   message: string
 }
 
