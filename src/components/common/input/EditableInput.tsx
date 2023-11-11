@@ -54,13 +54,15 @@ export default function EditableInput({ ref, onSave, ...props }: Props) {
     }
 
     try {
-      setEditing(false)
       await onSave(event?.currentTarget?.value)
+      setEditing(false)
 
       event?.currentTarget?.blur()
       event?.target?.blur()
     } catch (e: any) {
-      editing && event.currentTarget.focus()
+      editing && event?.currentTarget?.focus()
+      editing && event?.target?.focus()
+
       showAlert('error', e.message)
     }
   }
