@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import clsx from 'clsx'
 import { motion } from 'framer-motion'
 
@@ -13,8 +13,15 @@ import useAlert from '@/hooks/useAlert'
 
 type Props = {
   id: string
-  color: string
+  color: 'success' | 'error' | 'warning' | 'info'
   message: string
+}
+
+const colorMap = {
+  success: { line: 'border-l-success-base', icon: 'text-success-base' },
+  error: { line: 'border-l-error-base', icon: 'text-error-base' },
+  warning: { line: 'border-l-warning-base', icon: 'text-warning-base' },
+  info: { line: 'border-l-info-base', icon: 'text-info-base' },
 }
 
 export default function AlertBase({ id, color, message }: Props) {
@@ -44,7 +51,7 @@ export default function AlertBase({ id, color, message }: Props) {
       <Alert
         open={open}
         className={clsx(
-          '!w-auto bg-white rounded-md min-w-[240px] flex px-4 py-2 shadow-lg items-center justify-center border-l-4 border-l-success-base ',
+          '!w-auto bg-white rounded-md min-w-[240px] flex px-4 py-2 shadow-lg items-center justify-center border-l-4', colorMap[color].line
         )}
         action={
           <IconButton
@@ -57,7 +64,7 @@ export default function AlertBase({ id, color, message }: Props) {
         }
       >
         <div className="flex items-center justify-center gap-3">
-          <CheckCircleIcon className="w-6 h-6 text-success-base" />
+          <CheckCircleIcon className={clsx("w-6 h-6", colorMap[color].icon)} />
           <div className="text-xs text-main">
             <Typography variant="h6">Success</Typography>
             {message}

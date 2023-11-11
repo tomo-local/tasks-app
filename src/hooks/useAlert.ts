@@ -5,7 +5,10 @@ import { alertAtom } from '@/jotai/tools/atom';
 export default function useAlert() {
   const [alerts, setAlert] = useAtom(alertAtom)
 
-  const showAlert = (color: string, message: string) => {
+  const showAlert = (
+    color: 'success' | 'error' | 'warning' | 'info',
+    message: string,
+  ) => {
     setAlert([{ id: v4(), color, message }, ...alerts])
   }
 
