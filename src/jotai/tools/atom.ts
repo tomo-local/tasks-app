@@ -3,8 +3,12 @@ import { atom } from 'jotai'
 
 export const circularProcessAtom = atom(false)
 
-export const alertAtom = atom({
-  open: false, color: "red", message: ""
-})
+type AlertType = {
+  id: string
+  color: string
+  message: string
+}
+
+export const alertAtom = atom<AlertType[]>([])
 
 export const uiSettingAtom = atomWithStorage('ui', { drawer: false })

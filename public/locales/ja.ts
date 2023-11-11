@@ -9,6 +9,16 @@ const ja: I18n = {
   error: {
     notEntered: 'を入力してください',
   },
+  alert: {
+    create: {
+      success: '作成に成功しました',
+      failure: '作成に失敗しました',
+    },
+    update: {
+      success: '更新に成功しました',
+      failure: '更新に失敗しました',
+    },
+  },
   header: {
     notificationIcon: {
       title: '通知',
@@ -29,35 +39,16 @@ const ja: I18n = {
     tasks: { title: 'タスク' },
     setting: { title: '設定' },
   },
-  home: {
-    title: 'ホーム',
-  },
-  setting: {
-    title: '設定',
-    profile: {
-      title: 'ユーザープロフィール',
-      baseProfile: {
-        title: '基本情報',
-        fullName: '名前',
-        description: '説明',
-        location: '場所',
-        baseLanguage: '基本言語',
-      },
-      publicSetting: {
-        title: '公開設定',
-        public: '公開',
-        description: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇',
-      },
-      socialLink: {
-        title: 'リンク',
-        description:
-          '外部リンクを共有します。リンクがプロフィールに表示されるようになります。',
-        addLink: 'リンクを追加',
-      },
+  page: {
+    home: 'ホーム',
+    login: 'アプリへログイン',
+    setting: {
+      account: 'アカウント情報',
+      profile: 'プロフィール',
+      notification: '通知設定',
     },
   },
   login: {
-    title: 'アプリへログイン',
     form: {
       title: 'ログイン',
       description: 'ログインするには詳細を入力してください。',
@@ -73,6 +64,29 @@ const ja: I18n = {
       changeSignUpButton: 'アカウントを作成',
     },
   },
+  home: {},
+  account:{},
+  profile: {
+    baseProfile: {
+      title: '基本情報',
+      fullName: { label: '名前' },
+      description: { label: '説明' },
+      location: { label: '場所' },
+      baseLanguage: { label: '基本言語' },
+    },
+    publicSetting: {
+      title: '公開設定',
+      public: { label: '公開' },
+      description: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇',
+    },
+    socialLink: {
+      title: 'リンク',
+      description:
+        '外部リンクを共有します。リンクがプロフィールに表示されるようになります。',
+      addLink: 'リンクを追加',
+    },
+  },
+  notification: {}
 }
 
 export default ja

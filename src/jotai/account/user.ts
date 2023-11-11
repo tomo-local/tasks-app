@@ -24,7 +24,7 @@ const profileAtom = atom(
     const user = get(userAtom)
     return user?.profile
   },
-  (get, set, update: UserProfile) => {
+  (get, set, update: UserProfile | undefined) => {
     const user = get(userAtom)
 
     set(userAtom, {

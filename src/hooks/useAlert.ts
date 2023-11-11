@@ -1,29 +1,23 @@
+import { v4 } from 'uuid'
 import { useAtom } from 'jotai';
 import { alertAtom } from '@/jotai/tools/atom';
 
-
 export default function useAlert() {
-  const [alert, setAlert] = useAtom(alertAtom)
+  const [alerts, setAlert] = useAtom(alertAtom)
 
-  const showAlert = (color:string, message:string) => {
-    setAlert({
-      open: true,
-      color,
-      message
-    })
+  const showAlert = (color: string, message: string) => {
+    setAlert([{ id: v4(), color, message }, ...alerts])
   }
 
-  const closeAlert = () => {
-    setAlert({
-      open: false,
-      color: "",
-      message: ""
-    })
+  const removeAlert = (id: string) => {
+    setTimeout(() => {
+      setAlert((a) => a.filter((alert) => alert.id !== id))
+    }, 1000)
   }
 
   return {
-    alert,
+    alerts,
     showAlert,
-    closeAlert,
+    removeAlert,
   }
 }

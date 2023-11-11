@@ -7,6 +7,16 @@ export type I18n = {
   error: {
     notEntered: string
   }
+  alert: {
+    create: {
+      success: string
+      failure: string
+    }
+    update: {
+      success: string
+      failure: string
+    }
+  }
   header: {
     notificationIcon: {
       title: string
@@ -27,34 +37,16 @@ export type I18n = {
     tasks: { title: string }
     setting: { title: string }
   }
-  home: {
-    title: string
-  }
-  setting: {
-    title: string
-    profile: {
-      title: string
-      baseProfile: {
-        title: string
-        fullName: string
-        description: string
-        location: string
-        baseLanguage: string
-      }
-      publicSetting: {
-        title: string
-        public: string
-        description: string
-      }
-      socialLink: {
-        title: string
-        description: string
-        addLink: string
-      }
+  page: {
+    home: string
+    login: string
+    setting: {
+      account: string
+      profile: string
+      notification: string
     }
   }
   login: {
-    title: string
     form: {
       title: string
       description: string
@@ -70,4 +62,26 @@ export type I18n = {
       changeSignUpButton: string
     }
   }
+  home: {}
+  account: {}
+  profile: {
+    baseProfile: {
+      title: string
+      fullName: { label: string }
+      description: { label: string }
+      location: { label: string }
+      baseLanguage: { label: string }
+    }
+    publicSetting: {
+      title: string
+      public: { label: string }
+      description: string
+    }
+    socialLink: {
+      title: string
+      description: string
+      addLink: string
+    }
+  }
+  notification: {}
 }

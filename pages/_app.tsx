@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app'
 import { Provider } from 'jotai'
+// import { AnimatePresence } from 'framer-motion'
 import '@styles/globals.css'
 
 export default function App({
@@ -9,7 +10,9 @@ export default function App({
 
   return (
     <Provider>
-      <Component {...pageProps} />
+      {/* <AnimatePresence mode="wait"> */}
+        <Component {...pageProps} />
+      {/* </AnimatePresence> */}
     </Provider>
   )
 }

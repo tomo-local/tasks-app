@@ -28,9 +28,12 @@ async function updateProfile(profile: InputProfile) {
       .eq('id', profile.id)
       .select().single()
 
-    if (status !== 200 && statusText !== 'OK') {
-      console.log(error)
+    if (status !== 200 && statusText !== 'OK' ) {
       throw new Error(error?.message)
+    }
+
+    if (!data) {
+      throw new Error("not found data")
     }
 
     return data

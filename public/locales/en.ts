@@ -9,6 +9,16 @@ const en: I18n = {
   error: {
     notEntered: 'Please enter a ',
   },
+  alert: {
+    create: {
+      success: 'Creation Successful',
+      failure: 'Creation Failed',
+    },
+    update: {
+      success: 'Update Successful',
+      failure: 'Update Failed',
+    },
+  },
   header: {
     notificationIcon: {
       title: 'Notification',
@@ -17,7 +27,7 @@ const en: I18n = {
       title: 'Language',
     },
     userIcon: {
-      profile: 'User profile',
+      profile: 'User Profile',
       setting: 'Setting',
       logout: 'Logout',
     },
@@ -29,35 +39,16 @@ const en: I18n = {
     tasks: { title: 'Tasks' },
     setting: { title: 'Setting' },
   },
-  home: {
-    title: 'Home',
-  },
-  setting: {
-    title: 'Setting',
-    profile: {
-      title: 'Your Profile',
-      baseProfile: {
-        title: 'Base Profile',
-        fullName: 'Full Name',
-        description: 'Description',
-        location: 'Location',
-        baseLanguage: 'Base Language',
-      },
-      publicSetting: {
-        title: 'Publish Setting',
-        public: 'Public',
-        description: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇',
-      },
-      socialLink: {
-        title: 'Social Links',
-        description:
-          'Share an external link. The link will now appear on your profile.',
-        addLink: 'add link',
-      },
+  page: {
+    home: 'Home',
+    login: 'Login App',
+    setting: {
+      account: 'Account',
+      profile: 'Profile',
+      notification: 'Notification',
     },
   },
   login: {
-    title: 'Login App',
     form: {
       title: 'Login',
       description: 'Enter your details to login.',
@@ -73,6 +64,29 @@ const en: I18n = {
       changeSignUpButton: 'Create account',
     },
   },
+  home: {},
+  account: {},
+  profile: {
+    baseProfile: {
+      title: 'Base Profile',
+      fullName: { label: 'Full Name' },
+      description: { label: 'Description' },
+      location: { label: 'Location' },
+      baseLanguage: { label: 'Base Language' },
+    },
+    publicSetting: {
+      title: 'Publish Setting',
+      public: { label: 'Public' },
+      description: '〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇',
+    },
+    socialLink: {
+      title: 'Social Links',
+      description:
+        'Share an external link. The link will now appear on your profile.',
+      addLink: 'add link',
+    },
+  },
+  notification: {},
 }
 
 export default en
