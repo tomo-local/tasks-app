@@ -1,7 +1,14 @@
-import { useState, ChangeEvent, FocusEvent, KeyboardEvent, useEffect } from 'react'
+import {
+  useState,
+  ChangeEvent,
+  FocusEvent,
+  KeyboardEvent,
+  useEffect,
+  BaseSyntheticEvent,
+} from 'react'
 import Textarea from '@material-tailwind/react/components/Textarea'
-import type { TextareaProps } from '@material-tailwind/react';
-import useAlert from '@/hooks/useAlert';
+import type { TextareaProps } from '@material-tailwind/react'
+import useAlert from '@/hooks/useAlert'
 
 export type InputValue = string | undefined | null
 
@@ -9,12 +16,7 @@ interface Props extends TextareaProps {
   onSave: (value?: InputValue) => Promise<void>
 }
 
-
-export default function EditableInput({
-  ref,
-  onSave,
-  ...props
-}: Props) {
+export default function EditableInput({ ref, onSave, ...props }: Props) {
   const { showAlert } = useAlert()
   const [value, setValue] = useState(props.defaultValue || props.value)
   const [editing, setEditing] = useState(false)
@@ -35,7 +37,7 @@ export default function EditableInput({
 
   const onBlur = (event: FocusEvent<HTMLTextAreaElement>) => {
     props.onBlur && props.onBlur(event)
-    handleSave(event)
+    editing && handleSave(event)
   }
 
   const onKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -46,15 +48,21 @@ export default function EditableInput({
   }
 
   const handleSave = async (
-    event: FocusEvent<HTMLTextAreaElement> | KeyboardEvent<HTMLTextAreaElement>,
+    event:
+      | FocusEvent<HTMLTextAreaElement>
+      | KeyboardEvent<HTMLTextAreaElement>
+      | BaseSyntheticEvent<HTMLInputElement>,
   ) => {
     if (!editing || props.defaultValue === value) {
       return
     }
 
     try {
-      await onSave(event.currentTarget.value)
       setEditing(false)
+      await onSave(event.currentTarget.value)
+
+      event?.currentTarget?.blur()
+      event?.target?.blur()
     } catch (e: any) {
       editing && event.currentTarget.focus()
       showAlert('error', e.message)
